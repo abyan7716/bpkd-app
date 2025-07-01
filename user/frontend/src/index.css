@@ -1,0 +1,344 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+  
+/* Tailwind CSS customizations */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+ 
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* index.css atau global.css */
+.menu-button {
+  @apply bg-white hover:bg-violet-100 text-violet-600 shadow-md rounded-lg w-32 h-32 flex flex-col justify-center items-center transition-all;
+}
+
+/* Mengubah tampilan scrollbar di container form keluhan */
+.flex-1.overflow-hidden {
+  overflow-y: auto; /* Agar scroll bisa muncul jika konten melebihi */
+}
+
+/* Mengubah tampilan scrollbar pada box form keluhan */
+.flex-1.overflow-hidden::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+.flex-1.overflow-hidden::-webkit-scrollbar-track {
+  background: white; /* Latar belakang track scrollbar (putih) */
+}
+
+.flex-1.overflow-hidden::-webkit-scrollbar-thumb {
+  background-color: #6b3e9c; /* Warna bilah scrollbar (ungu) */
+  border-radius: 4px; /* Membuat bilah scrollbar lebih melengkung */
+}
+
+.flex-1.overflow-hidden::-webkit-scrollbar-thumb:hover {
+  background-color: #8c57c1; /* Warna bilah scrollbar saat hover */
+}
+
+.flex-1.overflow-hidden {
+  -ms-overflow-style: none;  /* Menghapus scrollbar di IE/Edge */
+  scrollbar-width: thin;     /* Mengatur ketebalan scrollbar di Firefox */
+  scrollbar-color: #6b3e9c white; /* Mengatur warna bilah scrollbar di Firefox */
+}
+
+/* Custom Scrollbar khusus untuk DenahAntrean */
+.custom-scroll-denah::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scroll-denah::-webkit-scrollbar-track {
+  background: #ffffff; /* Putih */
+  border-radius: 8px;
+}
+
+.custom-scroll-denah::-webkit-scrollbar-thumb {
+  background-color: #7e22ce; /* purple-700 */
+  border-radius: 8px;
+  border: 2px solid #ffffff; /* Biar ada space putih */
+}
+
+/* --- Navigation area (Tahun, Bulan, Tombol panah) --- */
+.react-calendar__navigation {
+  background: transparent;
+  margin-bottom: 1rem;
+}
+
+.react-calendar__navigation button {
+  background: #8b5cf6; /* purple-500 */
+  color: white;
+  font-weight: bold;
+  border-radius: 9999px; /* full rounded */
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover tombol navigasi */
+.react-calendar__navigation button:hover {
+  background: #7c3aed; /* purple-600 */
+}
+
+/* Saat tombol bulan/tahun diklik */
+.react-calendar__navigation__label:active {
+  background: white !important;
+  color: #8b5cf6 !important; /* Purple teks */
+}
+
+/* --- Calendar frame --- */
+.react-calendar {
+  border: 2px solid #8b5cf6; /* purple-500 */
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+/* Nama hari (Sun, Mon, etc) warna ungu */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-weight: bold;
+  color: #8b5cf6; /* purple-500 */
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Hari Minggu warna merah */
+.react-calendar__month-view__days__day--weekend {
+  color: #ef4444; /* red-500 */
+}
+
+/* --- Tile (Tanggal) --- */
+.react-calendar__tile {
+  color: #1f2937; /* gray-800 */
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover tanggal => Glow */
+.react-calendar__tile:hover {
+  background-color: rgba(139, 92, 246, 0.15); /* Soft purple hover */
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+/* Today */
+.react-calendar__tile--now {
+  background: #ddd6fe; /* purple-200 */
+  border-radius: 50%;
+}
+
+/* Selected (klik tanggal) */
+.react-calendar__tile--active {
+  background: #8b5cf6; /* purple-500 */
+  color: white;
+  border-radius: 50%;
+}
+
+/* --- Animasi popup muncul --- */
+@keyframes popup {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-popup {
+  animation: popup 0.3s ease-out;
+}
+
+/* Event Highlight */
+.event-day {
+  background-color: #8b5cf6 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+/* Tooltip untuk event */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #6d28d9;
+  color: white;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.75rem;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tengahin header navigasi Calendar */
+.custom-center-header .react-calendar__navigation {
+  justify-content: center;
+}
+
+/* Animasi popup dan close */
+@keyframes popup {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-popup {
+  animation: popup 0.3s ease-out forwards;
+}
+.animate-scaleDown {
+  animation: scaleDown 0.3s ease-in forwards;
+}
+.animate-fadeOut {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+/* Centerkan tombol navigasi calendar */
+.custom-calendar .react-calendar__navigation {
+  display: flex;
+  justify-content: center;
+}
+
+/* Tambahan di custom css */
+.custom-calendar .react-calendar__navigation button {
+  @apply transition-all duration-200 ease-in-out hover:scale-110 hover:bg-purple-400;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #ffffff; /* putih */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #9333ea; /* ungu Tailwind: purple-600 */
+  border-radius: 9999px; /* supaya bulat */
+  border: 2px solid #ffffff; /* kasih border putih supaya ada jarak */
+}
+
+/* Untuk Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #9333ea #ffffff;
+}

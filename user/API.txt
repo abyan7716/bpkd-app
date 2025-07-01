@@ -1,0 +1,6 @@
+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
+
+postgre pw : abyan7716
+port : 5432
+
+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

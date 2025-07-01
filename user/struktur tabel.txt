@@ -1,0 +1,41 @@
+struktur tabel
+
+CREATE TABLE keluhan (
+  id SERIAL PRIMARY KEY,
+  nama VARCHAR(255) NOT NULL,
+  nik VARCHAR(50) NOT NULL,
+  nop VARCHAR(50) NOT NULL,
+  jenis_pajak VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  isi_keluhan TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE antrean (
+  id SERIAL PRIMARY KEY,
+  loket INTEGER NOT NULL CHECK (loket BETWEEN 1 AND 3),
+  nomor_antrean INTEGER NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'Menunggu', -- atau 'Sedang Dilayani', 'Selesai'
+  mulai_dilayani_at TIMESTAMP, -- waktu pelayanan dimulai
+  durasi_estimasi INTEGER NOT NULL DEFAULT 10, -- estimasi dalam menit
+  dibuat_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS public.jadwal (
+    id SERIAL PRIMARY KEY,
+    summary TEXT NOT NULL,
+    description TEXT,
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP NOT NULL
+);
+
+CREATE TABLE "Berita" (
+  "id" SERIAL PRIMARY KEY,
+  "judul" VARCHAR(255) NOT NULL,
+  "isi" TEXT NOT NULL,
+  "penulis" VARCHAR(255) DEFAULT 'Admin',
+  "tanggal_publikasi" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  "gambar" VARCHAR(255),
+  "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
